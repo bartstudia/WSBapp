@@ -25,10 +25,17 @@ fun ResultScreen(
 ) {
     val percentage = (correctAnswers.toFloat() / totalQuestions * 100).toInt()
     val message = when {
-        percentage >= 80 -> "Świetna robota! 🎉"
-        percentage >= 60 -> "Dobrze Ci poszło! 👍"
-        percentage >= 40 -> "Nieźle! 😊"
-        else -> "Trzeba się douczyć! 📚"
+        percentage >= 80 -> "Świetna robota!"
+        percentage >= 60 -> "Dobrze Ci poszło!"
+        percentage >= 40 -> "Nieźle!"
+        else -> "Trzeba się douczyć!"
+    }
+
+    val messageEmoji = when {
+        percentage >= 80 -> "🎉"
+        percentage >= 60 -> "👍"
+        percentage >= 40 -> "😊"
+        else -> "📚"
     }
 
     val messageColor = when {
@@ -41,130 +48,140 @@ fun ResultScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Blue)
-            .padding(24.dp),
+            .padding(20.dp),
         contentAlignment = Alignment.Center
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentHeight(),
-            shape = RoundedCornerShape(24.dp),
+                .fillMaxHeight(0.95f),
+            shape = RoundedCornerShape(32.dp),
             colors = CardDefaults.cardColors(containerColor = White),
             elevation = CardDefaults.cardElevation(8.dp)
         ) {
             Column(
                 modifier = Modifier
-                    .padding(32.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .fillMaxSize()
+                    .padding(40.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
             ) {
-                // Logo
-                Text(
-                    text = "M",
-                    fontSize = 48.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Blue
-                )
-                Text(
-                    text = "UCZELNIE\nWSB MERITO",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Blue,
-                    textAlign = TextAlign.Center,
-                    lineHeight = 16.sp
-                )
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                // Result icon
-                Text(
-                    text = if (percentage >= 60) "🎉" else "📚",
-                    fontSize = 64.sp
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // Message
-                Text(
-                    text = message,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = messageColor,
-                    textAlign = TextAlign.Center
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Text(
-                    text = "Quiz zakończony!",
-                    fontSize = 14.sp,
-                    color = Color.Gray
-                )
-
-                Spacer(modifier = Modifier.height(32.dp))
-
-                // Score
-                Text(
-                    text = "Twój wynik:",
-                    fontSize = 14.sp,
-                    color = Color.Gray
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Text(
-                    text = "$correctAnswers/$totalQuestions",
-                    fontSize = 32.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Blue
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // Progress bar
-                LinearProgressIndicator(
-                    progress = correctAnswers.toFloat() / totalQuestions,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(12.dp),
-                    color = Blue,
-                    trackColor = Color.LightGray
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Text(
-                    text = "$percentage%",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Blue
-                )
-
-                Spacer(modifier = Modifier.height(32.dp))
-
-                // Restart button
-                Button(
-                    onClick = onRestartQuiz,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Blue)
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    // Logo
                     Text(
-                        text = "Rozpocznij ponownie",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
+                        text = "M",
+                        fontSize = 72.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Blue
+                    )
+                    Text(
+                        text = "UCZELNIE\nWSB MERITO",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Blue,
+                        textAlign = TextAlign.Center,
+                        lineHeight = 20.sp
                     )
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    // Result icon
+                    Text(
+                        text = messageEmoji,
+                        fontSize = 96.sp
+                    )
 
-                Text(
-                    text = "Dziękujemy za udział w quizie!",
-                    fontSize = 12.sp,
-                    color = Color.Gray,
-                    textAlign = TextAlign.Center
-                )
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    // Message
+                    Text(
+                        text = message,
+                        fontSize = 32.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = messageColor,
+                        textAlign = TextAlign.Center
+                    )
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Text(
+                        text = "Quiz zakończony!",
+                        fontSize = 16.sp,
+                        color = Color.Gray
+                    )
+
+                    Spacer(modifier = Modifier.height(48.dp))
+
+                    // Score
+                    Text(
+                        text = "Twój wynik:",
+                        fontSize = 18.sp,
+                        color = Color.Gray
+                    )
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Text(
+                        text = "$correctAnswers/$totalQuestions",
+                        fontSize = 48.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Blue
+                    )
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    // Progress bar
+                    LinearProgressIndicator(
+                        progress = correctAnswers.toFloat() / totalQuestions,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(16.dp),
+                        color = Blue,
+                        trackColor = Color.LightGray
+                    )
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Text(
+                        text = "$percentage%",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Blue
+                    )
+                }
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    // Restart button
+                    Button(
+                        onClick = onRestartQuiz,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(64.dp),
+                        shape = RoundedCornerShape(20.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = Blue)
+                    ) {
+                        Text(
+                            text = "Rozpocznij ponownie",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Text(
+                        text = "Dziękujemy za udział w quizie!",
+                        fontSize = 14.sp,
+                        color = Color.Gray,
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
         }
     }

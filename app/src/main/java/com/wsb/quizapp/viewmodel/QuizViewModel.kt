@@ -35,16 +35,11 @@ class QuizViewModel(private val questionDao: QuestionDao) : ViewModel() {
 
     fun selectAnswer(answer: String) {
         if (!state.isAnswerSubmitted) {
-            state = state.copy(selectedAnswer = answer)
-        }
-    }
-
-    fun submitAnswer() {
-        if (state.selectedAnswer != null && !state.isAnswerSubmitted) {
             val currentQuestion = state.questions[state.currentQuestionIndex]
-            val isCorrect = state.selectedAnswer == currentQuestion.correctAnswer
+            val isCorrect = answer == currentQuestion.correctAnswer
 
             state = state.copy(
+                selectedAnswer = answer,
                 isAnswerSubmitted = true,
                 correctAnswersCount = if (isCorrect) state.correctAnswersCount + 1 else state.correctAnswersCount
             )

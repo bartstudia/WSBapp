@@ -29,111 +29,122 @@ fun HomeScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Blue)
-            .padding(24.dp),
+            .padding(20.dp),
         contentAlignment = Alignment.Center
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentHeight(),
-            shape = RoundedCornerShape(24.dp),
+                .fillMaxHeight(0.95f),
+            shape = RoundedCornerShape(32.dp),
             colors = CardDefaults.cardColors(containerColor = White),
             elevation = CardDefaults.cardElevation(8.dp)
         ) {
             Column(
                 modifier = Modifier
-                    .padding(32.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .fillMaxSize()
+                    .padding(40.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
             ) {
-                // Logo
-                Text(
-                    text = "M",
-                    fontSize = 48.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Blue
-                )
-                Text(
-                    text = "UCZELNIE\nWSB MERITO",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Blue,
-                    textAlign = TextAlign.Center,
-                    lineHeight = 16.sp
-                )
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                // Title
-                Text(
-                    text = "Quiz Wiedzy o Uczelni",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.Black
-                )
-
-                Spacer(modifier = Modifier.height(4.dp))
-
-                // Divider
-                Divider(
-                    modifier = Modifier.width(60.dp).height(3.dp),
-                    color = Blue
-                )
-
-                Spacer(modifier = Modifier.height(32.dp))
-
-                // Stats
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    StatItem(icon = "📝", value = "10", label = "pytań")
-                    StatItem(icon = "🎯", value = "A-D", label = "wybór")
-                    StatItem(icon = "⏱", value = "∞", label = "bez limitu")
-                }
-
-                Spacer(modifier = Modifier.height(32.dp))
-
-                // Category selection
-                Text(
-                    text = "Tematy pytań:",
-                    fontSize = 14.sp,
-                    color = Color.Gray
-                )
-
-                Spacer(modifier = Modifier.height(12.dp))
-
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    CategoryTextChip(text = "Studia")
-                    CategoryTextChip(text = "Wiedza o uczelni")
-                }
-
-                Spacer(modifier = Modifier.height(32.dp))
-
-                // Start button
-                Button(
-                    onClick = { onStartQuiz(null) },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Blue)
-                ) {
+                    // Logo
                     Text(
-                        text = "Rozpocznij Quiz 🚀",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
+                        text = "M",
+                        fontSize = 72.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Blue
+                    )
+                    Text(
+                        text = "UCZELNIE\nWSB MERITO",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Blue,
+                        textAlign = TextAlign.Center,
+                        lineHeight = 20.sp
                     )
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    // Title
+                    Text(
+                        text = "Quiz Wiedzy o Uczelni",
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center
+                    )
 
-                Text(
-                    text = "Powodzenia w teście!",
-                    fontSize = 12.sp,
-                    color = Color.Gray
-                )
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    // Divider
+                    Divider(
+                        modifier = Modifier.width(80.dp).height(4.dp),
+                        color = Blue
+                    )
+
+                    Spacer(modifier = Modifier.height(48.dp))
+
+                    // Stats
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        StatItem(icon = "📝", value = "10", label = "pytań")
+                        StatItem(icon = "🎯", value = "A-D", label = "wybór")
+                        StatItem(icon = "⏱", value = "∞", label = "bez limitu")
+                    }
+
+                    Spacer(modifier = Modifier.height(48.dp))
+
+                    // Category selection
+                    Text(
+                        text = "Tematy pytań:",
+                        fontSize = 16.sp,
+                        color = Color.Gray
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        CategoryTextChip(text = "Studia")
+                        CategoryTextChip(text = "Wiedza o uczelni")
+                    }
+                }
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    // Start button
+                    Button(
+                        onClick = { onStartQuiz(null) },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(64.dp),
+                        shape = RoundedCornerShape(20.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = Blue)
+                    ) {
+                        Text(
+                            text = "Rozpocznij Quiz 🚀",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Text(
+                        text = "Powodzenia w teście!",
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
+                }
             }
         }
     }
@@ -146,18 +157,18 @@ fun StatItem(icon: String, value: String, label: String) {
     ) {
         Text(
             text = icon,
-            fontSize = 24.sp
+            fontSize = 36.sp
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = value,
-            fontSize = 18.sp,
+            fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Blue
         )
         Text(
             text = label,
-            fontSize = 12.sp,
+            fontSize = 14.sp,
             color = Color.Gray
         )
     }
@@ -167,17 +178,17 @@ fun StatItem(icon: String, value: String, label: String) {
 fun CategoryTextChip(text: String) {
     Box(
         modifier = Modifier
-            .height(36.dp)
+            .height(44.dp)
             .background(
                 color = LightGray,
-                shape = RoundedCornerShape(20.dp)
+                shape = RoundedCornerShape(22.dp)
             )
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 20.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = text,
-            fontSize = 12.sp,
+            fontSize = 14.sp,
             color = Color.Black
         )
     }

@@ -156,20 +156,21 @@ fun QuizScreen(
             Spacer(modifier = Modifier.weight(1f))
 
             // Next button
-            Button(
-                onClick = onNextQuestion,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(56.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Blue),
-                enabled = selectedAnswer != null
-            ) {
-                Text(
-                    text = if (isAnswerSubmitted) "Następne pytanie" else "Sprawdź odpowiedź",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
+            if (isAnswerSubmitted) {
+                Button(
+                    onClick = onNextQuestion,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Blue)
+                ) {
+                    Text(
+                        text = "Następne pytanie",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
             }
         }
     }

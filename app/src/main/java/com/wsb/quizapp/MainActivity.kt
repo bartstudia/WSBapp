@@ -77,11 +77,7 @@ fun QuizApp(questionDao: com.wsb.quizapp.data.QuestionDao) {
                     viewModel.selectAnswer(answer)
                 },
                 onNextQuestion = {
-                    if (state.isAnswerSubmitted) {
-                        viewModel.nextQuestion()
-                    } else {
-                        viewModel.submitAnswer()
-                    }
+                    viewModel.nextQuestion()
                 }
             )
         }
