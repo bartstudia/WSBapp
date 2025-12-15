@@ -6,7 +6,6 @@ Aplikacja mobilna Android do testowania wiedzy o Uczelni WSB Merito, stworzona w
 
 - Quiz z 10 losowymi pytaniami o WSB Merito
 - 20 pytań w bazie danych (10 o uczelni, 10 o studiach)
-- Możliwość wyboru kategorii pytań lub losowego quizu
 - Pytania wielokrotnego wyboru (A, B, C, D)
 - Wizualna informacja zwrotna (zielony - poprawna, czerwony - błędna)
 - Ekran wyników z procentowym wynikiem
