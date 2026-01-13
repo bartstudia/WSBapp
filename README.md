@@ -77,16 +77,8 @@ app/src/main/java/com/wsb/quizapp/
 Aplikacja zawiera 20 pytań podzielonych na dwie kategorie:
 
 ### Wiedza o uczelni (10 pytań)
-- Historia WSB
-- Struktura uczelni
-- Oferta edukacyjna
-- Współpraca międzynarodowa
 
 ### Studia (10 pytań)
-- System ECTS
-- Struktura studiów
-- Prawa i obowiązki studenta
-- Organizacja roku akademickiego
 
 ## Dodawanie Nowych Pytań
 
@@ -103,14 +95,6 @@ Question(
     category = "Wiedza o uczelni" // lub "Studia"
 )
 ```
-
-## Personalizacja
-
-### Zmiana kolorów
-Edytuj plik `app/src/main/java/com/wsb/quizapp/ui/theme/Color.kt`
-
-### Dodanie logo
-Umieść plik logo w `app/src/main/res/drawable/` i zaktualizuj komponenty UI
 
 ## Licencja
 
